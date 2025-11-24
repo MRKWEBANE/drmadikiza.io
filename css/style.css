@@ -255,20 +255,54 @@
     box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .08);
 }
 
+/* Button Styling (Initial State - Always Visible, Small) */
 .service-item .btn {
-    width: 40px;
-    height: 40px;
+    width: 40px; /* Fixed width for the initial plus sign state */
+    height: 40px; /* Fixed height for the initial plus sign state */
+    padding: 0; /* No padding initially, just for the plus sign */
+
     display: inline-flex;
-    align-items: center;
+    align-items: center; /* Vertically center icon */
+    justify-content: center; /* Horizontally center icon */
     background: #FFFFFF;
-    border-radius: 40px;
-    white-space: nowrap;
-    overflow: hidden;
-    transition: .5s;
+    border-radius: 40px; /* Makes it a circle */
+    
+    overflow: hidden; /* Hides the long text initially */
+    white-space: nowrap; /* Keeps all content on one line initially */
+    
+    transition: width .5s, height .5s, padding .5s, border-radius .5s; /* Smooth transitions for expansion */
+    
+    /* Text styles for the hidden/revealed state */
+    color: #333; /* Default text color */
+    font-size: 1rem; /* Adjust font size */
+    line-height: 1.4; /* For better readability when wrapped */
+    text-align: left; /* Text aligns left when it expands and wraps */
 }
 
+/* Plus Icon Styling */
+.service-item .btn .fa-plus {
+    font-size: 1.2rem; /* Adjust size of your plus icon */
+    color: var(--bs-primary); /* Assuming text-primary uses a CSS variable */
+    margin-right: 0; /* No margin initially */
+    flex-shrink: 0; /* Prevent the icon from shrinking */
+    transition: margin-right .5s; /* Smooth transition for margin */
+}
+
+/* Button Styling (On .service-item Hover) */
 .service-item:hover .btn {
-    width: 140px;
+    width: 180px; /* Adjust this width as needed for your content */
+    height: auto; /* Allow height to adjust as content wraps */
+    padding: 10px 15px; /* Add padding on hover for the expanded state */
+    border-radius: 10px; /* Adjust border-radius for the expanded, possibly multi-line state */
+    
+    overflow: visible; /* Show all content on hover */
+    white-space: normal; /* Allow text to wrap on hover */
+}
+
+/* Adjust the icon's margin when the .service-item is hovered to create space for text */
+.service-item:hover .btn .fa-plus {
+    margin-right: 10px; /* Add space between icon and text on hover */
+    color: var(--bs-primary); /* Keep consistent or change as desired */
 }
 
 
@@ -524,4 +558,5 @@
     width: 100%;
     max-width: 100%; /* Adjust the maximum width as needed */
 }
+
 
